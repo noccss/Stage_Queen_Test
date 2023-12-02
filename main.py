@@ -3,7 +3,7 @@ from pygame.locals import QUIT, KEYDOWN, K_SPACE
 from n_queens_solver import NQueensSolver
 import math
 
-CELL_SIZE = 50
+SIZE_CHESSHOUSE = 50
 
 class ChessBoardGUI:
     def __init__(self, board_size):
@@ -12,20 +12,20 @@ class ChessBoardGUI:
         self.solutions = list(self.solver.n_queen())
         self.current_solution_index = 0
         self.board = self.solutions[self.current_solution_index]
-        self.screen = pygame.display.set_mode((board_size * CELL_SIZE, board_size * CELL_SIZE))
+        self.screen = pygame.display.set_mode((board_size * SIZE_CHESSHOUSE, board_size * SIZE_CHESSHOUSE))
         self.queen_sprite = pygame.image.load("./asset/queen.png")
         pygame.display.set_icon(self.queen_sprite)
-        self.queen_sprite = pygame.transform.scale(self.queen_sprite, (CELL_SIZE, CELL_SIZE))
+        self.queen_sprite = pygame.transform.scale(self.queen_sprite, (SIZE_CHESSHOUSE, SIZE_CHESSHOUSE))
 
     def draw_board(self):
         for row in range(self.board_size):
             for col in range(self.board_size):
                 color = (255, 255, 255) if (row + col) % 2 == 0 else (0, 0, 0)
-                pygame.draw.rect(self.screen, color, (col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+                pygame.draw.rect(self.screen, color, (col * SIZE_CHESSHOUSE, row * SIZE_CHESSHOUSE, SIZE_CHESSHOUSE, SIZE_CHESSHOUSE))
 
     def draw_queens(self):
         for col, row in enumerate(self.board):
-            self.screen.blit(self.queen_sprite, (col * CELL_SIZE, (row - 1) * CELL_SIZE))
+            self.screen.blit(self.queen_sprite, (col * SIZE_CHESSHOUSE, (row - 1) * SIZE_CHESSHOUSE))
 
     def next_solution(self):
         self.current_solution_index = (self.current_solution_index + 1) % len(self.solutions)
@@ -86,6 +86,8 @@ class ChessBoardInput:
                         return size
             except ValueError:
                 print("Invalid input. Please enter a positive integer.")
+            except OverflowError:
+                print("Result is too large. Please enter another number")
 
 def main():
     board_size = ChessBoardInput.get_user_input()
