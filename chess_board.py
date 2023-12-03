@@ -13,5 +13,4 @@ class ChessBoard:
         list_output = [0] * len(permutation)
         for i in range(len(permutation)):
             list_output[permutation[i] - 1] = i + 1
-
         print(list_output, end=' ')

@@ -7,6 +7,7 @@ SIZE_CHESSHOUSE = 50
 
 class ChessBoardGUI:
     def __init__(self, board_size):
+        pygame.init()
         self.board_size = board_size
         self.solver = NQueensSolver(board_size)
         self.solutions = list(self.solver.n_queen())
@@ -33,7 +34,6 @@ class ChessBoardGUI:
 
     def display_solution_info(self):
         print(f"{self.board}")
-
         queen_count = len(set(self.board))
         if queen_count == 1:
             print("Explanation: Only one queen can be placed in the single cell available.")
@@ -45,7 +45,6 @@ class ChessBoardGUI:
         clock = pygame.time.Clock()
         running = True
         current_solution_text_displayed = False
-
         while running:
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -54,17 +53,13 @@ class ChessBoardGUI:
                     if event.key == K_SPACE:
                         self.next_solution()
                         current_solution_text_displayed = False
-
             self.draw_board()
             self.draw_queens()
             pygame.display.flip()
-
             if not current_solution_text_displayed:
                 self.display_solution_info()
                 current_solution_text_displayed = True
-
             clock.tick(5)
-
         pygame.quit()
 
 class ChessBoardInput:
@@ -74,14 +69,14 @@ class ChessBoardInput:
             try:
                 size = int(input("Enter the size of the chessboard and the number of queens: "))
                 if size < 1:
-                    print("Please enter a positive integer.")
+                    print("Please, enter number positive more than 1.")
                 elif size == 2 or size == 3:
                     print("There are no solutions for a chessboard of size 2 or 3. Please enter another number.")
                 else:
                     if size >= 11:
                         factorial_approximation = math.sqrt(2 * math.pi * size) * ((size / math.e) ** size)
-                        print(f"Note: For a chessboard of size {size}, the approximate number of possible solutions "
-                              f"is {factorial_approximation:.2e} (in scientific notation).")
+                        print(f"For a chessboard of size {size}, the approximate number of possible solutions 
+                                is {factorial_approximation:.2e} (in scientific notation).")
                     else:
                         return size
             except ValueError:
@@ -91,7 +86,6 @@ class ChessBoardInput:
 
 def main():
     board_size = ChessBoardInput.get_user_input()
-
     gui = ChessBoardGUI(board_size)
     gui.run()
 
