@@ -4,9 +4,9 @@
 The n-queens puzzle is the problem of placing n queens on a (n×n) chessboard such that no two queens can attack each other. Given an integer n, find all distinct solutions to the n-queens puzzle. Each solution contains distinct board configurations of the n-queens’ placement, where the solutions are a permutation of [1,2,3..n] in increasing order, where the number in the ith place denotes that the ith-column queen is placed in the row with that number.
 
 ## Usability
-In the terminal, there will be a prompt asking for the value of N. Only integer values above 0 will be accepted. After entering the value and pressing Enter, a window with the generated interface will open.
+When start the application, there will be a message box asking for the value of N. Only integer values above 0 will be accepted. After entering the value and pressing Enter, a window with the generated interface will open.
 
-![N Queen Terminal](asset/screenshot/terminal.png)
+![N Queen Terminal](asset/screenshot/input.gif)
 
 Press the space bar to switch between different solutions presented on the screen.
 
