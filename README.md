@@ -19,10 +19,11 @@ N = 1
 **Output:**
 
 ![First Example](asset/screenshot/1.png)
-
+```
 [1]
 
 Explanation: Only one queen can be placed in the single cell available.
+```
 
 ### Example 2:
 **Input:**
@@ -32,7 +33,7 @@ N = 4
 **Output:**
 
 ![Execution Gif](asset/screenshot/executing.gif)
-
+```
 [3, 1, 4, 2]
 
 Explanation: These are the 2 possible solutions.
@@ -40,6 +41,7 @@ Explanation: These are the 2 possible solutions.
 [2, 4, 1, 3]
 
 Explanation: These are the 2 possible solutions.
+```
 ## Task
 The task is to complete the chessboard which takes `n` as input parameter and returns a list containing all the possible chessboard configurations in sorted order. Return an empty list if no solution exists.
 
