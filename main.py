@@ -92,9 +92,9 @@ class ChessBoardInput:
         pygame.quit()
 
 def main():
-    board_size = ChessBoardInput.get_input()
-    if board_size is not None:
-        gui = ChessBoardGUI(board_size)
+    n = ChessBoardInput.get_input()
+    if n is not None:
+        gui = ChessBoardGUI(n)
         gui.run()
 
 if __name__ == "__main__":
